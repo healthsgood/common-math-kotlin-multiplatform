@@ -1,0 +1,45 @@
+# static history
+.history/
+
+# Ignore Gradle project-specific cache directory
+.gradle
+
+# Ignore Gradle build output directory
+/build
+*/build
+
+# Gradle SDK location
+/local.properties
+local.properties
+
+# IntelliJ
+out/
+*.iml
+.idea
+*.hprof
+
+# apple
+.DS_Store
+
+# others
+/captures
+.externalNativeBuild
+.cxx
+
+# Gradle and Maven with auto-import
+ *.ipr
+
+# CMake
+cmake-build-*/
+
+# File-based project format
+*.iws
+
+# JIRA plugin
+atlassian-ide-plugin.xml
+
+# Crashlytics plugin (for Android Studio and IntelliJ)
+com_crashlytics_export_strings.xml
+crashlytics.properties
+crashlytics-build.properties
+fabric.properties
