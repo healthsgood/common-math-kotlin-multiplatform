@@ -1,5 +1,5 @@
 plugins {
-    kotlin("multiplatform") version "1.5.10"
+    kotlin("multiplatform") version "1.5.21"
 }
 
 group = "cc.eroute"
@@ -10,6 +10,13 @@ repositories {
 }
 
 kotlin {
+    wasm32 {
+        binaries {
+            executable {
+                entryPoint = "lemmingapex.trilateration.main"
+            }
+        }
+    }
     jvm {
         compilations.all {
             kotlinOptions.jvmTarget = "1.8"
@@ -19,11 +26,8 @@ kotlin {
         }
     }
     js(LEGACY) {
-        browser {
-            commonWebpackConfig {
-                cssSupport.enabled = true
-            }
-        }
+        binaries.executable()
+        nodejs()
     }
     val hostOs = System.getProperty("os.name")
     val isMingwX64 = hostOs.startsWith("Windows")
@@ -48,5 +52,12 @@ kotlin {
         val jsTest by getting
         val nativeMain by getting
         val nativeTest by getting
+        val wasm32Main by getting{
+            dependencies {
+                implementation(kotlin("stdlib"))
+                implementation("org.jetbrains.kotlinx:kotlinx-serialization-runtime-wasm32:1.0-M1-1.4.0-rc")
+            }
+        }
+
     }
 }
