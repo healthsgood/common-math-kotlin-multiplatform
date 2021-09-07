@@ -3,7 +3,6 @@ package com.lemmingapex.trilateration
 import leastsquares.LeastSquaresOptimizer.Optimum
 import leastsquares.LevenbergMarquardtOptimizer
 import linear.RealVector
-import linear.exception.SingularMatrixException
 
 /**
  * Test class which is initialized with different predefined test cases.
@@ -32,29 +31,25 @@ class TrilaterationTest(
 
     private fun outputResult() {
         output = StringBuilder()
-        printDoubleArray("expectedPosition: ", expectedPosition)
-        printDoubleArray("linear calculatedPosition: ", linearCalculatedPosition!!.toArray())
-        printDoubleArray("non-linear calculatedPosition: ", nonLinearOptimum!!.getPoint()!!.toArray())
+        expectedPosition
+        linearCalculatedPosition!!.toArray()
+        nonLinearOptimum!!.getPoint()!!.toArray()
         output!!.append("numberOfIterations: ").append(nonLinearOptimum!!.getIterations()).append("\n")
         output!!.append("numberOfEvaluations: ").append(nonLinearOptimum!!.getEvaluations()).append("\n")
-        try {
-            val standardDeviation = nonLinearOptimum!!.getSigma(0.0)
-            printDoubleArray("standardDeviation: ", standardDeviation!!.toArray())
-            output!!.append("Norm of deviation: ").append(standardDeviation.getNorm()).append("\n")
-            val covarianceMatrix = nonLinearOptimum!!.getCovariances(0.0)
-            output!!.append("covarianceMatrix: ").append(covarianceMatrix).append("\n")
-        } catch (e: SingularMatrixException) {
-            System.err.println(e.message)
-        }
-        println(output.toString())
+        val standardDeviation = nonLinearOptimum!!.getSigma(0.0)
+        standardDeviation!!.toArray()
+        output!!.append("Norm of deviation: ").append(standardDeviation.getNorm()).append("\n")
+        val covarianceMatrix = nonLinearOptimum!!.getCovariances(0.0)
+        output!!.append("covarianceMatrix: ").append(covarianceMatrix).append("\n")
+        output.toString()
     }
 
     private fun compareExpectedAndCalculatedResults() {
         val calculatedPosition = nonLinearOptimum!!.getPoint()!!.toArray()
         for (i in calculatedPosition.indices) {
-            println(expectedPosition[i])
-            println(calculatedPosition[i])
-            println(acceptedDelta)
+            expectedPosition[i]
+            calculatedPosition[i]
+            acceptedDelta
         }
     }
 

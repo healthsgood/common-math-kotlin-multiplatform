@@ -1,5 +1,6 @@
 package lemmingapex.trilateration
 
+import PERFORMANCE_TEST_COUNT
 import com.lemmingapex.trilateration.TrilaterationTest
 import util.FastMath.sqrt
 import kotlin.js.Date
@@ -11,28 +12,27 @@ import kotlin.js.Date
  * @author burfi
  */
 fun main() {
-    println("当前时间： ${Date.now()}")
+    val timeMillis = Date.now()
 
-    trilateration1DExact1()
-    trilateration1DExact2()
-    trilateration1DInexact()
-    trilateration2DExact1()
-    trilateration2DZeroDistance()
-    trilateration2DExact2()
-    trilateration2DExact3()
-    trilateration2DExact4()
-    trilateration2DExact5()
-    trilateration2DInexact1()
-    trilateration2DInexact2()
-    trilateration2DNonIntersecting()
-    trilateration2DOverIntersecting()
-    trilateration2DDegenerateCase1()
-    trilateration2DDegenerateCase2()
-    trilateration2DUnderdertermined()
-    trilateration3DExact()
-    trilateration3DInexact()
-    trilateration4DInexact()
+    repeat(PERFORMANCE_TEST_COUNT) {
+        trilateration1DExact1()
+        trilateration1DExact2()
+        trilateration1DInexact()
+        trilateration2DExact1()
+        trilateration2DExact2()
+        trilateration2DExact3()
+        trilateration2DExact4()
+        trilateration2DExact5()
+        trilateration2DInexact1()
+        trilateration2DInexact2()
+        trilateration2DNonIntersecting()
+        trilateration2DOverIntersecting()
+        trilateration3DInexact()
+        trilateration4DInexact()
+    }
+
     println("hhg-end")
+    println("耗时: ${Date.now() - timeMillis}")
 }
 
 fun trilateration1DExact1() {

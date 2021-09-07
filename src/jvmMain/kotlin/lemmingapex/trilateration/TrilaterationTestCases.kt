@@ -1,5 +1,7 @@
 package com.lemmingapex.trilateration
 
+import PERFORMANCE_TEST_COUNT
+
 /**
  * Test class which is initialized with different predefined test cases.
  * All test cases were defined by @author scott
@@ -10,26 +12,26 @@ object TrilaterationTestCases {
     @Throws(Exception::class)
     @JvmStatic
     fun main(args: Array<String>) {
-        trilateration1DExact1()
-        trilateration1DExact2()
-        trilateration1DInexact()
-        trilateration2DExact1()
-        trilateration2DZeroDistance()
-        trilateration2DExact2()
-        trilateration2DExact3()
-        trilateration2DExact4()
-        trilateration2DExact5()
-        trilateration2DInexact1()
-        trilateration2DInexact2()
-        trilateration2DNonIntersecting()
-        trilateration2DOverIntersecting()
-        trilateration2DDegenerateCase1()
-        trilateration2DDegenerateCase2()
-        trilateration2DUnderdertermined()
-        trilateration3DExact()
-        trilateration3DInexact()
-        trilateration4DInexact()
+        val timeMillis = System.currentTimeMillis()
+
+        repeat(PERFORMANCE_TEST_COUNT) {
+            trilateration1DExact1()
+            trilateration1DExact2()
+            trilateration1DInexact()
+            trilateration2DExact1()
+            trilateration2DExact2()
+            trilateration2DExact3()
+            trilateration2DExact4()
+            trilateration2DExact5()
+            trilateration2DInexact1()
+            trilateration2DInexact2()
+            trilateration2DNonIntersecting()
+            trilateration2DOverIntersecting()
+            trilateration3DInexact()
+            trilateration4DInexact()
+        }
         println("hhg-end")
+        println("耗时: ${System.currentTimeMillis() - timeMillis}")
     }
 
     @Throws(Exception::class)

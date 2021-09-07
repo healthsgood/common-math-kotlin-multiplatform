@@ -1,5 +1,6 @@
 package lemmingapex.trilateration
 
+import PERFORMANCE_TEST_COUNT
 import com.lemmingapex.trilateration.TrilaterationTest
 import util.FastMath.sqrt
 import kotlin.system.getTimeMillis
@@ -10,30 +11,25 @@ import kotlin.system.getTimeMillis
  *
  * @author burfi
  */
-private const val COUNT = 100
-
 fun main() {
     val timeMillis = getTimeMillis()
 
-    trilateration1DExact1()
-    trilateration1DExact2()
-    trilateration1DInexact()
-    trilateration2DExact1()
-    trilateration2DZeroDistance()
-    trilateration2DExact2()
-    trilateration2DExact3()
-    trilateration2DExact4()
-    trilateration2DExact5()
-    trilateration2DInexact1()
-    trilateration2DInexact2()
-    trilateration2DNonIntersecting()
-    trilateration2DOverIntersecting()
-    trilateration2DDegenerateCase1()
-    trilateration2DDegenerateCase2()
-    trilateration2DUnderdertermined()
-    trilateration3DExact()
-    trilateration3DInexact()
-    trilateration4DInexact()
+    repeat(PERFORMANCE_TEST_COUNT) {
+        trilateration1DExact1()
+        trilateration1DExact2()
+        trilateration1DInexact()
+        trilateration2DExact1()
+        trilateration2DExact2()
+        trilateration2DExact3()
+        trilateration2DExact4()
+        trilateration2DExact5()
+        trilateration2DInexact1()
+        trilateration2DInexact2()
+        trilateration2DNonIntersecting()
+        trilateration2DOverIntersecting()
+        trilateration3DInexact()
+        trilateration4DInexact()
+    }
 
     println("hhg-end")
     println("耗时: ${getTimeMillis() - timeMillis}")
